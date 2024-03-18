@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "501565747400",
+    "project_id": "lighttool-1044a",
+    "storage_bucket": "lighttool-1044a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501565747400:android:bb82d0ead29209129635fd",
+        "android_client_info": {
+          "package_name": "com.richand.attribution.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZyxdIwNqEIeUkRNs1BLsI1C_LmtAAh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
