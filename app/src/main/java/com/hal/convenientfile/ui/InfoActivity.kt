@@ -10,6 +10,7 @@ import com.gyf.immersionbar.ImmersionBar
 import com.hal.convenientfile.R
 import com.hal.convenientfile.databinding.ActivityInfoBinding
 import com.hal.convenientfile.entity.SourceEntity
+import com.hal.convenientfile.util.AdUtil
 import com.hal.convenientfile.utils.Constant
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -55,7 +56,9 @@ class InfoActivity : AppCompatActivity() {
 
     private fun initEvent() {
         binding.ivBack.setOnClickListener {
-            onBackPressed()
+            AdUtil.checkInnerAdAndGoOn(this) {
+                onBackPressed()
+            }
         }
     }
 

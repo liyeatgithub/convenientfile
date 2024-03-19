@@ -20,6 +20,8 @@ import com.gyf.immersionbar.ImmersionBar
 import com.hal.convenientfile.adapter.MainApkAdapter
 import com.hal.convenientfile.adapter.MainSourceAdapter
 import com.hal.convenientfile.databinding.ActivityMainBinding
+import com.hal.convenientfile.util.AdUtil
+import com.hal.convenientfile.util.AppUtil
 import com.hal.convenientfile.utils.Constant
 import com.hal.convenientfile.utils.FileUtils
 import kotlinx.coroutines.Dispatchers
@@ -114,7 +116,9 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             } else {
                 if (isAllPermissionsGranted(permissionArraysLower)) {
-                    StorageActivity.start(this)
+                    AdUtil.checkInnerAdAndGoOn(this){
+                        StorageActivity.start(this)
+                    }
                 } else {
                     Toast.makeText(
                         this,
@@ -127,39 +131,57 @@ class MainActivity : AppCompatActivity() {
 
         //图片
         binding.llImage.setOnClickListener {
-            BrowseActivity.start(this, Constant.IMAGE)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.IMAGE)
+            }
         }
         binding.tvViewMoreImage.setOnClickListener {
-            BrowseActivity.start(this, Constant.IMAGE)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.IMAGE)
+            }
         }
 
         //视频
         binding.llVideo.setOnClickListener {
-            BrowseActivity.start(this, Constant.VIDEO)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.VIDEO)
+            }
         }
         binding.tvViewMoreVideo.setOnClickListener {
-            BrowseActivity.start(this, Constant.VIDEO)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.VIDEO)
+            }
         }
         //music
         binding.llAudio.setOnClickListener {
-            BrowseActivity.start(this, Constant.AUDIO)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.AUDIO)
+            }
         }
 
         //apk
         binding.llApks.setOnClickListener {
-            BrowseActivity.start(this, Constant.APKS)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.APKS)
+            }
         }
         binding.tvViewMoreApks.setOnClickListener {
-            BrowseActivity.start(this, Constant.APKS)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.APKS)
+            }
         }
         //下载
         binding.llDownloads.setOnClickListener {
-            BrowseActivity.start(this, Constant.DOWNLOAD)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.DOWNLOAD)
+            }
         }
 
         //文档
         binding.llDocuments.setOnClickListener {
-            BrowseActivity.start(this, Constant.DOCUMENT)
+            AdUtil.checkInnerAdAndGoOn(this){
+                BrowseActivity.start(this, Constant.DOCUMENT)
+            }
         }
     }
 

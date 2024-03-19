@@ -16,6 +16,7 @@ import com.hal.convenientfile.adapter.DirListAdapter
 import com.hal.convenientfile.databinding.ActivityStorageBinding
 import com.hal.convenientfile.entity.DirFileEntity
 import com.hal.convenientfile.entity.DirListEntity
+import com.hal.convenientfile.util.AdUtil
 import com.hal.convenientfile.utils.FileUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -126,13 +127,17 @@ class StorageActivity : AppCompatActivity() {
 
     private fun initEvent() {
         binding.ivBack.setOnClickListener {
-            finish()
+            AdUtil.checkInnerAdAndGoOn(this) {
+                finish()
+            }
         }
     }
 
     override fun onBackPressed() {
         if (currentPath == rootPath) {
-            super.onBackPressed()
+            AdUtil.checkInnerAdAndGoOn(this) {
+                super.onBackPressed()
+            }
         } else {
             currentPath = currentPath.substring(0, currentPath.lastIndexOf("/"))
             lifecycleScope.launch {

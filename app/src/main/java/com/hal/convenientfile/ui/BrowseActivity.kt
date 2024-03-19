@@ -21,6 +21,7 @@ import com.gyf.immersionbar.ImmersionBar
 import com.hal.convenientfile.adapter.BrowseSourceAdapter
 import com.hal.convenientfile.databinding.ActivityBrowseBinding
 import com.hal.convenientfile.entity.SourceEntity
+import com.hal.convenientfile.util.AdUtil
 import com.hal.convenientfile.utils.Constant
 import com.hal.convenientfile.utils.FileUtils
 import kotlinx.coroutines.Dispatchers
@@ -94,7 +95,9 @@ class BrowseActivity : AppCompatActivity() {
 
     private fun initEvent() {
         binding.ivBack.setOnClickListener {
-            finish()
+            AdUtil.checkInnerAdAndGoOn(this) {
+                finish()
+            }
         }
         //全选
         binding.tvAllSelect.setOnClickListener {
@@ -362,6 +365,10 @@ class BrowseActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (isSelectedModeLiveData.value == true) {
             isSelectedModeLiveData.value = false
-        } else super.onBackPressed()
+        } else {
+            AdUtil.checkInnerAdAndGoOn(this) {
+                super.onBackPressed()
+            }
+        }
     }
 }
