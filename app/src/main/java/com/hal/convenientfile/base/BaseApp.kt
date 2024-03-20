@@ -14,11 +14,12 @@ import androidx.lifecycle.*
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.hal.convenientfile.config.EnvConfig
+import com.hal.convenientfile.lib.tools.QOV
 import com.hal.convenientfile.net.ApiService
 import com.hal.convenientfile.net.BaseObserver
 import com.hal.convenientfile.net.NetConstants
 import com.hal.convenientfile.net.NetUtil
-import com.hal.convenientfile.service.MiConService
+import com.hal.convenientfile.service.MiTopConService
 import com.hal.convenientfile.ui.ConSsActivity
 import com.hal.convenientfile.util.*
 import com.hal.convenientfile.util.UserTypeParamValue.CONNECT_CHAR
@@ -83,9 +84,9 @@ class BaseApp : Application(), LifecycleOwner {
             log("init sdk...process ", getProcessName(Process.myPid()))
             if (isMainProcess()) {
                 //默认打开保活,如果默认关闭注释掉
-//                VV.b(true)
+                QOV.b(true)
             }
-//            VV.init(this)
+            QOV.init(this)
             //拉活
 //            Fddk.a(this)
         } else {
@@ -98,7 +99,7 @@ class BaseApp : Application(), LifecycleOwner {
         FireBaseUtil.initializeApp()
         if (isNeedUserInformations()) {
             //需要获取user type相关数据
-            if (isNeedFirebaseInfos()) {
+            if (isNeedFirebaseInfo()) {
                 registerUserInfoEvents()
             }
             if (AdUtil.isInBlackList.value == null) {
@@ -125,7 +126,7 @@ class BaseApp : Application(), LifecycleOwner {
     /**
      * 是否需要获取firebase
      */
-    private fun isNeedFirebaseInfos(): Boolean {
+    private fun isNeedFirebaseInfo(): Boolean {
 //        val isInBlackList = AdUtil.isInBlackList.value
         val isInThirdPlatform = AdUtil.isInThirdPlatform.value
         val checkAutoTestResult = AdUtil.checkAutoTestResult.value
@@ -196,7 +197,7 @@ class BaseApp : Application(), LifecycleOwner {
      */
     private fun isNeedUserInformations(): Boolean {
         val isInBlackList = AdUtil.isInBlackList.value
-        return isNeedFirebaseInfos() || isInBlackList == null
+        return isNeedFirebaseInfo() || isInBlackList == null
     }
 
     private fun getMdfhfdfox(): Int {
@@ -222,7 +223,7 @@ class BaseApp : Application(), LifecycleOwner {
             var isInThirdPlatform =
                 if (!EnvConfig.adChannels.contains(adjustChannel)) "1" else "0"
             //模拟推送渠道
-            isInThirdPlatform = "0"
+//            isInThirdPlatform = "0"
             SPUtil.putString(SpKey.SP_KEY_IN_THIRD_PLATFORM, isInThirdPlatform)
             AdUtil.isInThirdPlatform.value = isInThirdPlatform
         }
@@ -286,7 +287,7 @@ class BaseApp : Application(), LifecycleOwner {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     "set keep false...".log()
-//                    VV.b(false)
+                    QOV.b(false)
                 }, 20_000)
             }
             //上传用户类型事件
@@ -543,7 +544,7 @@ class BaseApp : Application(), LifecycleOwner {
                     startForegroundService(
                         Intent(
                             app,
-                            MiConService::class.java
+                            MiTopConService::class.java
                         )
                     )
                 } catch (e: Exception) {

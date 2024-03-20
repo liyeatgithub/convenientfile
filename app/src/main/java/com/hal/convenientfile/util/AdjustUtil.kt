@@ -12,7 +12,7 @@ import com.adjust.sdk.LogLevel
 import com.anythink.core.api.ATSDK
 import com.hal.convenientfile.base.BaseApp
 import com.hal.convenientfile.config.EnvConfig
-import com.hal.convenientfile.service.MiConService
+import com.hal.convenientfile.service.MiTopConService
 
 /**
  * Description:
@@ -65,7 +65,7 @@ object AdjustUtil {
                             BaseApp.app.startForegroundService(
                                 Intent(
                                     BaseApp.app,
-                                    MiConService::class.java
+                                    MiTopConService::class.java
                                 )
                             )
                         } catch (e: Exception) {

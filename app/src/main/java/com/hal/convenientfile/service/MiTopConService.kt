@@ -13,7 +13,7 @@ import com.hal.convenientfile.util.AppUtil
 import com.hal.convenientfile.util.Cloak
 import com.hal.convenientfile.util.log
 
-class MiConService : Service() {
+class MiTopConService : Service() {
     private val notificationId = 344
     private val notificationManager by lazy { getSystemService(NotificationManager::class.java) }
     private val channelId = "sureok"
